@@ -1,9 +1,5 @@
-<html>
-<body>
-
-<script>
 /**
- * Ð ÐµÐ°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ API, Ð½Ðµ Ð¸Ð·Ð¼ÐµÐ½ÑÐ¹Ñ‚Ðµ ÐµÐµ
+ * Реализация API, не изменяйте ее
  * @param {string} url
  * @param {function} callback
  */
@@ -46,7 +42,7 @@ function getData(url, callback) {
 }
 
 /**
- * Ð’Ð°ÑˆÐ¸ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ Ð½Ð¸Ð¶Ðµ
+ * Ваши изменения ниже
  */
 var requests = ['/countries', '/cities', '/populations'];
 var responses = {};
@@ -132,5 +128,3 @@ function after(l) {
       console.log('Population in your request: ' + fp);
   }
 }
-</script>
-</body></html>
