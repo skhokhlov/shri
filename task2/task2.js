@@ -7,7 +7,7 @@ function getData(url, callback) {
     var RESPONSES = {
         '/countries': [
             {name: 'Cameroon', continent: 'Africa'},
-            {name :'Fiji Islands', continent: 'Oceania'},
+            {name: 'Fiji Islands', continent: 'Oceania'},
             {name: 'Guatemala', continent: 'North America'},
             {name: 'Japan', continent: 'Asia'},
             {name: 'Yugoslavia', continent: 'Europe'},
@@ -46,85 +46,75 @@ function getData(url, callback) {
  */
 var requests = ['/countries', '/cities', '/populations'];
 var responses = {};
+var l = [];
 
-
-  var l = [];
-
-getData(requests[0], function(error, result){
+getData(requests[0], function (error, result) {
     if (error) {
         throw new Error(error);
     }
 
     responses[requests[0]] = result;
-
     l.push(requests[0]);
-
     after(l.length);
 });
 
-getData(requests[1], function(error, result){
+getData(requests[1], function (error, result) {
     if (error) {
         throw new Error(error);
     }
 
     responses[requests[1]] = result;
-
     l.push(requests[1]);
-
     after(l.length);
 });
 
-getData(requests[2], function(error, result){
+getData(requests[2], function (error, result) {
     if (error) {
         throw new Error(error);
     }
 
     responses[requests[2]] = result;
-
-        l.push(requests[2]);
-
-        after(l.length);
-
-
+    l.push(requests[2]);
+    after(l.length);
 });
 
 function after(l) {
     if (l == 3) {
-      var c = [], cc = [], p = 0, f = [], fp = 0;
+        var c = [], cc = [], p = 0, f = [], fp = 0, i, j;
 
-      var find = window.prompt();
+        var find = window.prompt('City or country name');
 
-      for (i = 0; i < responses['/countries'].length; i++) {
-          if (responses['/countries'][i].continent === 'Africa') {
-              c.push(responses['/countries'][i].name);
-          }
-      }
+        for (i = 0; i < responses['/countries'].length; i++) {
+            if (responses['/countries'][i].continent === 'Africa') {
+                c.push(responses['/countries'][i].name);
+            }
+        }
 
-      for (i = 0; i < responses['/cities'].length; i++) {
-          for (j = 0; j < c.length; j++) {
-              if (responses['/cities'][i].country === c[j]) {
-                  cc.push(responses['/cities'][i].name);
-              }
-          }
-          if (responses['/cities'][i].country === find) {
-              f.push(responses['/cities'][i].name);
-          }
-      }
+        for (i = 0; i < responses['/cities'].length; i++) {
+            for (j = 0; j < c.length; j++) {
+                if (responses['/cities'][i].country === c[j]) {
+                    cc.push(responses['/cities'][i].name);
+                }
+            }
+            if (responses['/cities'][i].country === find || responses['/cities'][i].name === find) {
+                f.push(responses['/cities'][i].name);
+            }
+        }
 
-      for (i = 0; i < responses['/populations'].length; i++) {
-          for (j = 0; j < cc.length; j++) {
-              if (responses['/populations'][i].name === cc[j]) {
-                  p += responses['/populations'][i].count;
-              }
-          }
-          for (j = 0; j < f.length; j++) {
-              if (responses['/populations'][i].name === f[j]) {
-                  fp += responses['/populations'][i].count;
-              }
-          }
-      }
+        for (i = 0; i < responses['/populations'].length; i++) {
+            for (j = 0; j < cc.length; j++) {
+                if (responses['/populations'][i].name === cc[j]) {
+                    p += responses['/populations'][i].count;
+                }
+            }
+            for (j = 0; j < f.length; j++) {
+                if (responses['/populations'][i].name === f[j]) {
+                    fp += responses['/populations'][i].count;
+                }
+            }
+        }
 
-      console.log('Total population in African cities: ' + p);
-      console.log('Population in your request: ' + fp);
-  }
+        console.log('Total population in African cities: ' + p);
+        console.log('Population in your request: ' + fp);
+    }
 }
