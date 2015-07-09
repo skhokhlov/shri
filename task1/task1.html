@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .tablo__row:nth-child(odd) {
+            background-color: #bababa;
+        }
+
+        .tablo__row:first-child {
+            background-color: #ff8780;
+        }
+
+        .tablo__cell {
+            padding: 0.8em;
+        }
+
+    </style>
+</head>
+<body>
+<div class="switcher">
+    <input type="radio" class="switcher__checkbox switcher__checkbox_arrive" name="switcher" id="arrive"/>
+    <label for="arrive">Arrive</label>
+    <input type="radio" class="switcher__checkbox switcher__checkbox_depart" name="switcher" id="depart"/>
+    <label for="depart">Depart</label>
+</div>
+
+<div class="tablo">
+    <table>
+        <tr class="tablo__row tablo__row_header">
+            <td class="tablo__cell">
+                <span>Тип</span>
+            </td>
+            <td class="tablo__cell">
+                <span>Рейс</span>
+            </td>
+            <td class="tablo__cell">
+                <span>Авиакомпания</span>
+            </td>
+            <td class="tablo__cell">
+                <span>Самолет</span>
+            </td>
+            <td class="tablo__cell">
+                <span>Аэропорт</span>
+            </td>
+            <td class="tablo__cell">
+                <span>Время</span>
+            </td>
+            <td class="tablo__cell">
+                <span>Статус</span>
+            </td>
+            <td class="tablo__cell">
+                <span>Примечание</span>
+            </td>
+        </tr>
+        <tr class="tablo__row tablo__row_arrive">
+            <td class="tablo__cell">
+                <span>П</span>
+            </td>
+            <td class="tablo__cell">
+                <span>7R 137</span>
+            </td>
+            <td class="tablo__cell">
+                <span>Руслайн</span>
+                <img src=""/>
+            </td>
+            <td class="tablo__cell">
+                <span>Boeing 737</span>
+                <img src=""/>
+            </td>
+            <td class="tablo__cell">
+                <span>Краснодар(Пашковский)</span>
+            </td>
+            <td class="tablo__cell">
+                <span>9 июл 13:50</span>
+            </td>
+            <td class="tablo__cell">
+                <span>Задержан</span>
+            </td>
+            <td class="tablo__cell">
+                <span></span>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
