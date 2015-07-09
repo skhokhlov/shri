@@ -46,7 +46,7 @@ function getData(url, callback) {
  */
 var requests = ['/countries', '/cities', '/populations'];
 var responses = {};
-var l = [];
+var l = 0;
 
 getData(requests[0], function (error, result) {
     if (error) {
@@ -54,8 +54,7 @@ getData(requests[0], function (error, result) {
     }
 
     responses[requests[0]] = result;
-    l.push(requests[0]);
-    after(l.length);
+    after(++l);
 });
 
 getData(requests[1], function (error, result) {
@@ -64,8 +63,7 @@ getData(requests[1], function (error, result) {
     }
 
     responses[requests[1]] = result;
-    l.push(requests[1]);
-    after(l.length);
+    after(++l);
 });
 
 getData(requests[2], function (error, result) {
@@ -74,12 +72,11 @@ getData(requests[2], function (error, result) {
     }
 
     responses[requests[2]] = result;
-    l.push(requests[2]);
-    after(l.length);
+    after(++l);
 });
 
 function after(l) {
-    if (l == 3) {
+    if (l === 3) {
         var c = [], cc = [], p = 0, f = [], fp = 0, i, j;
 
         var find = window.prompt('City or country name');
@@ -115,6 +112,6 @@ function after(l) {
         }
 
         console.log('Total population in African cities: ' + p);
-        console.log('Population in your request: ' + fp);
+        console.log('Population of your request: ' + fp);
     }
 }
