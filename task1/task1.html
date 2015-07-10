@@ -2,8 +2,19 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>Табло</title>
     <style>
+        .tablo {
+            overflow: hidden;
+            display: table;
+        }
+
+        .tablo__row {
+            display: table-row;
+            text-decoration: none;
+            color: #000;
+        }
+
         .tablo__row:nth-child(odd) {
             background-color: #bababa;
         }
@@ -14,6 +25,53 @@
 
         .tablo__cell {
             padding: 0.8em;
+            position: relative;
+            display: table-cell;
+        }
+
+        .tablo__row:hover {
+            background-color: #afb0ff;
+        }
+
+        .tablo__cell:hover::after {
+            content: "";
+            position: absolute;
+            background-color: #afb0ff;
+            left: 0;
+            top: -100vw;
+            height: 100vw;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .popup {
+            display: none;
+        }
+
+        .popup:target {
+            display: block;
+            position: absolute;
+            background: #fff;
+            border: 1px solid;
+            top: 50%;
+            left: 50%;
+            padding: 1em;
+        }
+
+        @media (max-width: 950px) {
+            .tablo__logo {
+                display: none;
+            }
+
+            .tablo__cell {
+                padding: 0.3em;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .tablo__cell_aircraft {
+                display: none;
+            }
         }
 
     </style>
@@ -27,62 +85,65 @@
 </div>
 
 <div class="tablo">
-    <table>
-        <tr class="tablo__row tablo__row_header">
-            <td class="tablo__cell">
-                <span>Тип</span>
-            </td>
-            <td class="tablo__cell">
-                <span>Рейс</span>
-            </td>
-            <td class="tablo__cell">
-                <span>Авиакомпания</span>
-            </td>
-            <td class="tablo__cell">
-                <span>Самолет</span>
-            </td>
-            <td class="tablo__cell">
-                <span>Аэропорт</span>
-            </td>
-            <td class="tablo__cell">
-                <span>Время</span>
-            </td>
-            <td class="tablo__cell">
-                <span>Статус</span>
-            </td>
-            <td class="tablo__cell">
-                <span>Примечание</span>
-            </td>
-        </tr>
-        <tr class="tablo__row tablo__row_arrive">
-            <td class="tablo__cell">
-                <span>П</span>
-            </td>
-            <td class="tablo__cell">
-                <span>7R 137</span>
-            </td>
-            <td class="tablo__cell">
-                <span>Руслайн</span>
-                <img src=""/>
-            </td>
-            <td class="tablo__cell">
-                <span>Boeing 737</span>
-                <img src=""/>
-            </td>
-            <td class="tablo__cell">
-                <span>Краснодар(Пашковский)</span>
-            </td>
-            <td class="tablo__cell">
-                <span>9 июл 13:50</span>
-            </td>
-            <td class="tablo__cell">
-                <span>Задержан</span>
-            </td>
-            <td class="tablo__cell">
-                <span></span>
-            </td>
-        </tr>
-    </table>
+    <div class="tablo__row tablo__row_header">
+        <div class="tablo__cell tablo__cell_type">
+            <span>Тип</span>
+        </div>
+        <div class="tablo__cell tablo__cell_flight">
+            <span>Рейс</span>
+        </div>
+        <div class="tablo__cell tablo__cell_company">
+            <span>Авиакомпания</span>
+        </div>
+        <div class="tablo__cell tablo__cell_aircraft">
+            <span>Самолет</span>
+        </div>
+        <div class="tablo__cell tablo__cell_port">
+            <span>Аэропорт</span>
+        </div>
+        <div class="tablo__cell tablo__cell_time">
+            <span>Время</span>
+        </div>
+        <div class="tablo__cell tablo__cell_status">
+            <span>Статус</span>
+        </div>
+        <div class="tablo__cell tablo__cell_info">
+            <span>Примечание</span>
+        </div>
+    </div>
+    <a href="#7R_137" class="tablo__row tablo__row_arrive">
+        <div class="tablo__cell tablo__cell_type">
+            <span>П</span>
+        </div>
+        <div class="tablo__cell tablo__cell_flight">
+            <span>7R 137</span>
+        </div>
+        <div class="tablo__cell tablo__cell_company">
+            <span>Airfrance</span>
+            <img class="tablo__logo" src="http://svo.aero/r/7F140A14-936D-452E-8B8D-B14214707604/logo_af_small.png"/>
+        </div>
+        <div class="tablo__cell tablo__cell_aircraft">
+            <span>Boeing 737</span>
+            <img src=""/>
+        </div>
+        <div class="tablo__cell tablo__cell_port">
+            <span>Краснодар(Пашковский)</span>
+        </div>
+        <div class="tablo__cell tablo__cell_time">
+            <span>9 июл 13:50</span>
+        </div>
+        <div class="tablo__cell tablo__cell_status">
+            <span>Задержан до 23:32</span>
+        </div>
+        <div class="tablo__cell tablo__cell_info">
+            <span></span>
+        </div>
+    </a>
+</div>
+
+<div class="popup" id="7R_137">
+    <a href="#">Close</a>
+    7R 137
 </div>
 </body>
 </html>
